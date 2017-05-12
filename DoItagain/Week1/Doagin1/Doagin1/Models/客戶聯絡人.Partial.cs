@@ -1,4 +1,4 @@
-namespace MVC5Homework1.Models
+namespace Doagin1.Models
 {
     using System;
     using System.Collections.Generic;
@@ -6,31 +6,33 @@ namespace MVC5Homework1.Models
     using System.Linq;
 
     [MetadataType(typeof(客戶聯絡人MetaData))]
-    public partial class 客戶聯絡人 : IValidatableObject
+    public partial class 客戶聯絡人: IValidatableObject
     {
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            var db = new 客戶資料Entities();
-            
-            if (this.Id == 0) //Create資料
+            var db = new 客戶資料Entities1();
+
+            if (this.Id == 0)
             {
-                if( db.客戶聯絡人.Where(x => x.客戶Id != this.客戶Id && x.Email == this.Email).Any())
+                //Create
+                if(db.客戶聯絡人.Where(x=>x.客戶Id != this.客戶Id  && x.Id == this.Id && x.Email == this.Email).Any())
                 {
-                    yield return new ValidationResult("Email 已存在", new string[] { "Email"});
+                    yield return new ValidationResult("Email已存在");
                 }
             }
-            else //更新資料
+            else
             {
-                if(db.客戶聯絡人.Where(x => x.客戶Id == this.客戶Id &&  x.Id != this.Id && x.Email == this.Email).Any())
+                //Update
+                if (db.客戶聯絡人.Where(x => x.客戶Id == this.客戶Id && x.Id == this.Id && x.Email == this.Email).Any())
                 {
-                    yield return new ValidationResult("Email 已存在", new string[] { "Email" });
+                    yield return new ValidationResult("Email已存在");
                 }
             }
 
             yield return ValidationResult.Success;
         }
     }
-
+    
     public partial class 客戶聯絡人MetaData
     {
         [Required]
@@ -51,7 +53,7 @@ namespace MVC5Homework1.Models
         public string Email { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
-        [RegularExpression(@"\d{4}-\d{6}", ErrorMessage ="手機號碼必須為09xx-xxxxxx")]
+        [RegularExpression(@"\d{4}-\d{6}",ErrorMessage ="手機號碼必須為09xx-xxxxxx")]
         public string 手機 { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
