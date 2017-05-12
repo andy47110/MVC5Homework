@@ -201,6 +201,8 @@
     <Compile Include="Controllers\CustDataManageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\客戶聯絡人Controller.cs" />
+    <Compile Include="Controllers\客戶銀行資訊Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,11 +226,11 @@
     <Compile Include="Models\sp_helpdiagrams_Result.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>客戶資料.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\sysdiagrams.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw客戶關聯資料統計表.cs">
+      <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶聯絡人.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
@@ -349,6 +351,22 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\CustDataManage\Index.cshtml" />
+    <Content Include="Views\CustDataManage\Create.cshtml" />
+    <Content Include="Views\CustDataManage\Delete.cshtml" />
+    <Content Include="Views\CustDataManage\Edit.cshtml" />
+    <Content Include="Views\CustDataManage\Detail.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Create.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Delete.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Details.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Edit.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Index.cshtml" />
+    <Content Include="Views\客戶聯絡人\Create.cshtml" />
+    <Content Include="Views\客戶聯絡人\Delete.cshtml" />
+    <Content Include="Views\客戶聯絡人\Details.cshtml" />
+    <Content Include="Views\客戶聯絡人\Edit.cshtml" />
+    <Content Include="Views\客戶聯絡人\Index.cshtml" />
+    <Content Include="Views\CustDataManage\客戶關聯資料表.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -361,9 +379,7 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\CustDataManage\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
